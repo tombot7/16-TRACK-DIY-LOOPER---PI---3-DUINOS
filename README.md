@@ -5,7 +5,7 @@
 
  Hi! So, this looper runs on a Rasberry Pi, which is running a Linux Distro called Patchbox by Blokas.  That OS is made specifically for audio stuff and it works great with Blokas' Pi audio interface, Pisound. I decided to go that route even though it was more expensive because I had heard great things about Blokas and I wanted it to all work with the interface easily, etc.  The people at Blokas were SUPER helpful in ironing stuff out and then went above and beyond with things like writing a python script so when the thing launched it would also launch the looper via puredata etc.  The OS does some of that stuff on its own anyway, especially with the Pisound hat on, but I had some tweaks. I'm not gonna post any of the linux or python stuff though at this point.  For software, it's running Purr data, which basically has a main.pd and that opens 16 copies of track.pd (actually 21 but for obsolete reasons).  It's also talking to the foot pedal via USB comport (i think that's why i needed purr data instead of pure data, or one of the reasons, for the comport extension) and it's talking to a desktop mixer via usb ("remote"). It's also talking to a little screen via bluetooth LE. It actually does that by sending signals to the pedal's arduino, which then relays them to the screen.  That's because those little bluefruit guys were designed to talk to each other.  That battery is so huge for the bluetooth screen and uses so little energy that I think I have literally only charged it maybe three times -- and only out of like "oh I should charge this" I've never seen it run out of batteries.
 
- So that's it! Let me know if I can help demystify any of this.  USE ANY PART YOU WANT. It's all open source / no rights reserved, whatever you want to call it.  Point is, I'm not worried about it. This is just for fun.  Of course, if you somehow manage to make money from this, you could send me some, I guess. Or give it to the flat earth society or the guys at Bay 12 games who make Dwarf Fortress, just because I like them.  Thanks! 
+ So that's it! Let me know if I can help demystify any of this.  USE ANY PART YOU WANT. It's all open source / no rights reserved, whatever you want to call it.  Point is, I'm not worried about it. This is just for fun.  Of course, if you somehow manage to make money from this, you could send me some, I guess. Or give it to the flat earth society or the guys at Bay 12 games who make Dwarf Fortress, just because I like them.  Thanks!
 
 
 HARDWARE LIST:
@@ -39,9 +39,15 @@ I also forget where I got the metal enclosure for the foot pedal
 SOFTWARE LIST:
 
 Linux OS - Patchbox --> CODE / OS NOT POSTED. I used a Rasberry Pi 4B I think it's called.
+
 Phython Script to launch purr data --> NOT POSTED
+
 Looper itself - Main.pd -- runs in purr data
+
 Individual tracks Track.pd -- Main.pd runs 16 copies of Track.pd.  You have to put Track.pd in a place purr data knows to look for it
+
 Main.iso -> sorry this is also named main.  This is the arduino code that runs the foot pedal. It's actually an Adafruit Feather nRF52840 Express and it talks to the screen also
+
 Display.iso -> this is the code for the little tiny display. This is ALSO a Adafruit Feather nRF52840 Express but it's running in receive mode. They both use Bluetooth LE.
+
 Remote.iso - this is the arduino code that runs the wooden box mixer / "remote"  It runs on the Elegoo Mega.
